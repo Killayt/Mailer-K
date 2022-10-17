@@ -1,16 +1,15 @@
-package main
+package sendler
 
 import (
 	"crypto/tls"
 
-	"mailerK/service/load"
-
 	"gopkg.in/gomail.v2"
 )
 
-func main() {
-	maket := load.GetHtmlMaket("/home/killayt/projects/Mailer-K/service/makets/fitst/user.html")
+type Dialer struct {
+}
 
+func Send() {
 	d := gomail.NewDialer("smtp.gmail.com", 587, "mailerk62@gmail.com", "lohzgrkpegwsffol")
 	d.TLSConfig = &tls.Config{InsecureSkipVerify: true}
 
@@ -21,7 +20,7 @@ func main() {
 		"Subject": {"Hello"},
 	})
 	m.SetAddressHeader("Cc", "surnamename615@gmail.com", "Maksim")
-	m.SetBody("text/html", string(maket))
+	m.SetBody("text/html", "Hello <b>Bob</b> and <i>Cora</i>!")
 
 	// Send the email to Bob, Cora and Dan.
 	if err := d.DialAndSend(m); err != nil {
