@@ -5,10 +5,12 @@ import (
 	"os"
 )
 
-func CreateSubject() string {
+type Subject []byte
+
+func CreateSubject() Subject {
 	var subject string
 	fmt.Println("Enter subject: ")
 	fmt.Fscan(os.Stdin, &subject)
 
-	return subject
+	return Subject(subject)
 }
