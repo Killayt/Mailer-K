@@ -5,10 +5,10 @@ import (
 	"os"
 )
 
-func GetHtmlMaket(path string) []byte {
+func LoadMaket(path string) (file []byte) {
 	file, err := os.ReadFile(path)
 	if err != nil {
-		log.Panic("File not found\n", err)
+		log.Panic("File not found", err)
 	}
 
 	return file
