@@ -1,4 +1,19 @@
 {
-    "mail" : "surnamename615@gmail.com",
-    "name" : "Maksim"
+	"subscribers" : [
+		{
+			"email" : "surnamename615@gmail.com",
+			"name" : "Maksim",
+			"phone" : "80-77-524-2432"
+		},
+		{
+			"email" : "mailerl62@gmail.com",
+			"name" : "Sasha",
+			"phone" : ""
+		},
+		{
+			"email" : "someAnotherMail@gmail.com",
+			"name" : "NoName",
+			"phone" : "12-23-563-1241"
+		}
+	]
 }
