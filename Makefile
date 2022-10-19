@@ -1,8 +1,7 @@
 .SILENT:
 
 build:
-	go get gopkg.in/gomail.v2
+	go get gopkg.in/gomail.v2 && go build -o mailer-k .
 
 run: build
-	go build -o mailer-k .
 	./mailer-k
