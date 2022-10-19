@@ -30,6 +30,9 @@ func main() {
 
 	fmt.Println("\n" + "[SUCCESS] Maket was found !")
 
+	// creating subject
+	subject := load.CreateSubject()
+
 	// making message
 	s, err := dialer.Dial()
 	if err != nil {
@@ -38,9 +41,9 @@ func main() {
 
 	m := gomail.NewMessage()
 	for _, r := range sub.Subscribers {
-		m.SetHeader("From", "no-reply@example.com")
+		m.SetHeader("From", dialer.Username)
 		m.SetAddressHeader("To", r.Email, r.Name)
-		m.SetHeader("Subject", "Newsletter #1")
+		m.SetHeader("Subject", string(subject))
 		m.SetBody("text/html", string(maket))
 
 		if err := gomail.Send(s, m); err != nil {
