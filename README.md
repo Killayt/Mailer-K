@@ -2,10 +2,13 @@
 <p>Mailer-K - это сервис для email рассылки.<br>База подписчиков для рассылки хранится в формате JSON (в массиве)</p>
 
 # How to use
-<p>
+<p> 
     <code>
-        go run main.go (or) ./mailerk
-    </code>
+        cd path/to/Mailer-K
+    </code><br>
+    <code>
+        make run
+    </code><br>
 </p>
 
 <p>
