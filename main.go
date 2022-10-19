@@ -40,17 +40,21 @@ func main() {
 	}
 
 	m := gomail.NewMessage()
-	for _, r := range sub.Subscribers {
+
+	for _, subscriber := range sub.Subscribers {
+
 		m.SetHeader("From", dialer.Username)
-		m.SetAddressHeader("To", r.Email, r.Name)
+		m.SetAddressHeader("To", subscriber.Email, subscriber.Name)
 		m.SetHeader("Subject", string(subject))
+
 		m.SetBody("text/html", string(maket))
 
 		if err := gomail.Send(s, m); err != nil {
-			log.Printf("Could not send email to %q: %v", r.Email, err)
+			log.Printf("Could not send email to %q: %v", subscriber.Email, err)
 		}
 		m.Reset()
-		log.Printf("message was send to %v to the person %v (phone: %v)", r.Email, r.Name, r.Phone)
+		log.Printf("message was send to %v to the person %v (phone: %v)", subscriber.Email, subscriber.Name, subscriber.Phone)
+
 	}
 
 }
