@@ -26,7 +26,10 @@ func main() {
 	var PathToMaket []byte
 	fmt.Print("Set the full PATH to html MAKET here: ")
 	fmt.Fscan(os.Stdin, &PathToMaket)
-	maket := load.LoadMaket(string(PathToMaket))
+	template, err := load.LoadTemplate(string(PathToMaket))
+	if err != nil {
+		log.Println("Template not found")
+	}
 
 	fmt.Println("\n" + "[SUCCESS] Maket was found !")
 
@@ -39,6 +42,8 @@ func main() {
 		panic(err)
 	}
 
+	// var wg sync.WaitGroup
+
 	m := gomail.NewMessage()
 
 	for _, subscriber := range sub.Subscribers {
@@ -47,7 +52,7 @@ func main() {
 		m.SetAddressHeader("To", subscriber.Email, subscriber.Name)
 		m.SetHeader("Subject", string(subject))
 
-		m.SetBody("text/html", string(maket))
+		m.SetBody("text/html", template)
 
 		if err := gomail.Send(s, m); err != nil {
 			log.Printf("Could not send email to %q: %v", subscriber.Email, err)

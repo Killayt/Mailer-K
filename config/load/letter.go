@@ -6,21 +6,20 @@ import (
 	"os"
 )
 
-type Subject []byte
-
-func CreateSubject() Subject {
+func CreateSubject() string {
 	var subject string
 	fmt.Println("Enter subject: ")
 	fmt.Fscan(os.Stdin, &subject)
 
-	return Subject(subject)
+	return subject
 }
 
-func LoadMaket(path string) (file []byte) {
-	file, err := os.ReadFile(path)
+func LoadTemplate(path string) (string, error) {
+	bytes, err := os.ReadFile(path)
 	if err != nil {
-		log.Panic("File not found", err)
+		log.Println("File not found", err)
+		LoadTemplate(path)
 	}
 
-	return file
+	return string(bytes), nil
 }
