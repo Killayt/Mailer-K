@@ -3,12 +3,8 @@
 
 # How to use
 <p> 
-    <code>
-        cd path/to/Mailer-K
-    </code><br>
-    <code>
-        make run
-    </code><br>
+    <code>cd path/to/Mailer-K</code><br>
+    <code>make run</code><br>
 </p>
 
 <p>
